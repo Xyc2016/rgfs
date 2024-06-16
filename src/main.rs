@@ -27,6 +27,18 @@ struct Cli {
     files: Vec<PathBuf>,
 }
 
+fn get_git_root() -> PathBuf {
+    let output = process::Command::new("git")
+        .arg("rev-parse")
+        .arg("--show-toplevel")
+        .output()
+        .expect("Failed to run git rev-parse --show-toplevel");
+    let git_root = std::str::from_utf8(&output.stdout)
+        .expect("Failed to parse git rev-parse --show-toplevel output")
+        .trim();
+    PathBuf::from(git_root)
+}
+
 fn main() {
     let cli = Cli::parse();
     dbg!(cli);
