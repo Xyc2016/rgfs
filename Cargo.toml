@@ -5,3 +5,8 @@ edition = "2021"
 
 [dependencies]
 clap = { version = "4.5.7", features = ["derive", "env", "cargo"] }
+filenamegen = "0.2.6"
+fnmatch-regex = "0.2.0"
+glob = "0.3.1"
+log = "0.4.21"
+regex = "1.10.5"
